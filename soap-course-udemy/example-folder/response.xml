@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GetCourseDetaisResponse
+	xmlns="http://in28minutes/courses"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://in28minutes/courses course-details.xsd">
+	<CourseDetails>
+		<id>123</id>
+		<name>Spring soap 1</name>
+		<description>First wsdl wokring</description>
+	</CourseDetails>
+</GetCourseDetaisResponse>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://soap.com/courses" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://soap.com/courses" targetNamespace="http://soap.com/courses">
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://soap.com/courses">
+
+	<xs:element name="GetCourseDetailsRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:int"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GetCourseDetailsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="CourseDetails" type="tns:CourseDetails"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+<xs:element name="DeleteCourseDetailsRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:int"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="DeleteCourseDetailsResponse">
+		<xs:complexType>
+			<xs:sequence>
+			
+				<xs:element name="status" type="tns:Status"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:simpleType name="Status">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SUCCESS"/>
+			<xs:enumeration value="FAILURE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="GetAllCourseDetailsRequest">
+		<xs:complexType/>
+	</xs:element>
+
+	<xs:element name="GetAllCourseDetailsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" name="CourseDetails" type="tns:CourseDetails"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:complexType name="CourseDetails">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="description" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="DeleteCourseDetailsRequest">
+    <wsdl:part element="tns:DeleteCourseDetailsRequest" name="DeleteCourseDetailsRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAllCourseDetailsRequest">
+    <wsdl:part element="tns:GetAllCourseDetailsRequest" name="GetAllCourseDetailsRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAllCourseDetailsResponse">
+    <wsdl:part element="tns:GetAllCourseDetailsResponse" name="GetAllCourseDetailsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetCourseDetailsResponse">
+    <wsdl:part element="tns:GetCourseDetailsResponse" name="GetCourseDetailsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DeleteCourseDetailsResponse">
+    <wsdl:part element="tns:DeleteCourseDetailsResponse" name="DeleteCourseDetailsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetCourseDetailsRequest">
+    <wsdl:part element="tns:GetCourseDetailsRequest" name="GetCourseDetailsRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CouserPort">
+    <wsdl:operation name="DeleteCourseDetails">
+      <wsdl:input message="tns:DeleteCourseDetailsRequest" name="DeleteCourseDetailsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:DeleteCourseDetailsResponse" name="DeleteCourseDetailsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCourseDetails">
+      <wsdl:input message="tns:GetAllCourseDetailsRequest" name="GetAllCourseDetailsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:GetAllCourseDetailsResponse" name="GetAllCourseDetailsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseDetails">
+      <wsdl:input message="tns:GetCourseDetailsRequest" name="GetCourseDetailsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:GetCourseDetailsResponse" name="GetCourseDetailsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CouserPortSoap11" type="tns:CouserPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="DeleteCourseDetails">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="DeleteCourseDetailsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="DeleteCourseDetailsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCourseDetails">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetAllCourseDetailsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetAllCourseDetailsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseDetails">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetCourseDetailsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetCourseDetailsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CouserPortService">
+    <wsdl:port binding="tns:CouserPortSoap11" name="CouserPortSoap11">
+      <soap:address location="http://zld03115.vci.att.com:8404/soap-course-udemy/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
